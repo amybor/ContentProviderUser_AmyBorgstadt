@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements
 
     private static CursorLoader cursorLoader;
 
-    private static final String uri = "content://alb77.example.com.contentprovideruser_amyborgstadt.Custom_ContentProvider/contacts";
+    private static final String uri = "content://alb77.example.com.contentprovider_amyborgstadt.Custom_ContentProvider/contacts";
 
 
 
