@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <resources>
+        <string name="app_name">ContentProviderUser_AmyBorgstadt</string>
+        <string name="hello_world">Hello World!</string>
+        <string name="menu_settings">Settings</string>
+        <string name="show_data">Show Contacts</string>
+        <string name="fetch">Fetch Data from Content Provider</string>
+        <string  name="id">Enter ID</string>
+        <string name="update">Update</string>
+        <string name="delete">Delete</string>
+        <string name="update_delete">Enter ID to Update/Delete Contact</string>
+        <string name="insert">Add New Contact</string>
+    </resources>
+

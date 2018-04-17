@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "568245668023",
+    "firebase_url": "https://contentprovideramyborgstadt.firebaseio.com",
+    "project_id": "contentprovideramyborgstadt",
+    "storage_bucket": "contentprovideramyborgstadt.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568245668023:android:3c291c8226efae59",
+        "android_client_info": {
+          "package_name": "alb77.example.com.contentprovider_amyborgstadt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568245668023-v1ka8gcg8aqso4jnnbr5qu494v3ietae.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "alb77.example.com.contentprovider_amyborgstadt",
+            "certificate_hash": "a51af5eed9b5d7913cbf000aede3164399f969a4"
+          }
+        },
+        {
+          "client_id": "568245668023-qbkvsbj4pgrd0m4kslq0vp0o74pajj4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVl7GYibndTUJ5OpHNJTJg2dOvi8H4v4U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568245668023-qbkvsbj4pgrd0m4kslq0vp0o74pajj4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568245668023:android:7b471a8e6ac6c875",
+        "android_client_info": {
+          "package_name": "alb77.example.com.contentprovideruser_amyborgstadt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568245668023-hc085e0jbek4cccp8mkc4fr2ovpkcd34.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "alb77.example.com.contentprovideruser_amyborgstadt",
+            "certificate_hash": "a51af5eed9b5d7913cbf000aede3164399f969a4"
+          }
+        },
+        {
+          "client_id": "568245668023-qbkvsbj4pgrd0m4kslq0vp0o74pajj4t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVl7GYibndTUJ5OpHNJTJg2dOvi8H4v4U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568245668023-qbkvsbj4pgrd0m4kslq0vp0o74pajj4t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
