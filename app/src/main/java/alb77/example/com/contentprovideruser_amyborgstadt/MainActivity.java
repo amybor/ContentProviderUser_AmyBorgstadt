@@ -22,13 +22,23 @@ public class MainActivity extends AppCompatActivity implements
         LoaderManager.LoaderCallbacks<Cursor>, OnClickListener {
     private static TextView resultView;
     private static EditText id;
-    private static Button retrieve, update, delete, insert;
+    private static Button retrieve;
+    private static Button update;
+    private static Button delete;
+    private static Button insert;
+
+    private EditText editName;
+    private EditText editEmail;
+    private EditText editPhone;
+    private EditText editAddress;
+    private EditText editBirthday;
 
     private static CursorLoader cursorLoader;
 
-    private static final String uri = "content://alb77.example.com.contentprovider_amyborgstadt.Custom_ContentProvider/contacts";
+    private static final String uri = "content://alb77.example.com.contentprovideruser_amyborgstadt.Custom_ContentProvider/contacts";
 
-    // URI
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,29 +58,50 @@ public class MainActivity extends AppCompatActivity implements
         delete.setOnClickListener(this);
         insert.setOnClickListener(this);
 
+        // Strings to work with for functions
+        editName = (EditText) findViewById(R.id.txtName);
+        editEmail = (EditText) findViewById(R.id.txtEmail);
+        editPhone = (EditText) findViewById(R.id.txtContact);
+        editAddress = (EditText) findViewById(R.id.txtAddress);
+        editBirthday = (EditText) findViewById(R.id.txtBirthday);
+
     }
 
-    // On click call representative methods
+    // on click call methods
     @Override
     public void onClick(View v) {
+
+        String name = editName.getText().toString();
+        String email = editEmail.getText().toString();
+        String phone = editPhone.getText().toString();
+        String address = editAddress.getText().toString();
+        String birthday = editBirthday.getText().toString();
+
+
         switch (v.getId()) {
             case R.id.btnRetrieve:
                 onClickDisplayData();// Fetch data
                 break;
             case R.id.btnUpdate:
-
                 // Update data according to Id
                 String getId = id.getText().toString();
                 if (!getId.equals("") && getId.length() != 0)
-                    updateData(new String[] { getId });
+                {
+                    updateData(new String[] { getId }, name, email, phone, address, birthday);
+                }
                 else
+                {
                     Toast.makeText(MainActivity.this, "Id is empty.",
                             Toast.LENGTH_SHORT).show();
-
+                }
+                editName.setText("");
+                editPhone.setText("");
+                editEmail.setText("");
+                editAddress.setText("");
+                editBirthday.setText("");
                 break;
 
             case R.id.btnDelete:
-
                 // Delete data according to Id
                 String getId_ = id.getText().toString();
                 if (!getId_.equals("") && getId_.length() != 0)
@@ -78,20 +109,19 @@ public class MainActivity extends AppCompatActivity implements
                 else
                     Toast.makeText(MainActivity.this, "Id is empty.",
                             Toast.LENGTH_SHORT).show();
-
                 break;
             case R.id.btnInsert:
-
                 // Insert data
-                insertData();
+                insertData(name, email, phone, address, birthday);
                 break;
 
         }
 
     }
 
+
     private void onClickDisplayData() {
-        // Initate loader manager
+        // Initiate loader manager
         getSupportLoaderManager().initLoader(1, null, this);
     }
 
@@ -101,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements
             cursorLoader = new CursorLoader(this, Uri.parse(uri), null, null,
                     null, null);// Get cursor loader from URI
         } catch (NullPointerException e) {
-            // if exception occurs toast occurs
+            // if exception occurs show toast
             Toast.makeText(
                     MainActivity.this,
                     "There is no app found corresponding to your content provider.",
@@ -134,8 +164,8 @@ public class MainActivity extends AppCompatActivity implements
                         + "\nContact Number - "
                         + cursor.getString(cursor.getColumnIndex("number"))
                         + "\nAddress - "
-                        + cursor.getString(cursor.getColumnIndex("address"))
-                        + "\nBirthday - "
+                        +cursor.getString(cursor.getColumnIndex("address"))
+                        + "\nBithday - "
                         + cursor.getString(cursor.getColumnIndex("birthday"))
                         + "\n\n");
                 cursor.moveToNext();
@@ -157,30 +187,23 @@ public class MainActivity extends AppCompatActivity implements
 
     }
 
-    // Random int value generator method between 0-5
-    private int RandomInt() {
-        Random random = new Random();
-        int randomValue = random.nextInt(5);
-        return randomValue;
-    }
-
     // Update data method
-    private void updateData(String[] id) {
+    private void updateData(String[] id, String name, String email, String phone, String address, String birthday ) {
         Cursor cursor = getContentResolver().query(Uri.parse(uri), null, null,
                 null, null);// Get cursor from Uri
 
         // If cursor is not null then update data else show toast
         if (cursor != null) {
-            int randomValue = RandomInt();// Get random integer
+            //int randomValue = RandomInt();// Get random integer
             ContentValues values = new ContentValues();// Content values to
             // insert data
-            values.put("name", Random_Data.Name[randomValue]);// add data from
-            // RandomDatas
-            // class
-            values.put("email", Random_Data.Email[randomValue]);
-            values.put("number", Random_Data.Number[randomValue]);
-            values.put("address", Random_Data.Address[randomValue]);
-            values.put("birthday", Random_Data.Birthday[randomValue]);
+            values.put("name", name);
+            values.put("email", email);
+            values.put("number", phone);
+            values.put("address", address);
+            values.put("birthday", birthday);
+
+
             int count = getContentResolver().update(Uri.parse(uri), values,
                     "id = ?", id);// now update provider using ID
 
@@ -232,17 +255,18 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     // Insert random data
-    private void insertData() {
+    private void insertData(String name, String email, String number, String address, String birthday) {
         Cursor cursor = getContentResolver().query(Uri.parse(uri), null, null,
                 null, null);
         // First check if cursor is null or not
         if (cursor != null) {
-            int randomValue = RandomInt();
+            //int randomValue = RandomInt(); // not needed to fill random data
             ContentValues values = new ContentValues();
-            values.put("name", Random_Data.Name[randomValue]);
-            values.put("email", Random_Data.Email[randomValue]);
-            values.put("address", Random_Data.Address[randomValue]);
-            values.put("birthday", Random_Data.Birthday[randomValue]);
+            values.put("name", name);
+            values.put("email", email);
+            values.put("number", number);
+            values.put("address", address);
+            values.put("birthday", birthday);
             Uri uri_ = getContentResolver().insert(Uri.parse(uri), values);
             Toast.makeText(MainActivity.this, "Contact inserted.",
                     Toast.LENGTH_LONG).show();
@@ -260,5 +284,4 @@ public class MainActivity extends AppCompatActivity implements
     }
 
 }
-
 
